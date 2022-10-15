@@ -3,5 +3,5 @@
 ---
   - hosts: webservers:loadbalancers
     tasks:
-      - name: Get OS type
+      - name: Get OS and type
         shell: uname
