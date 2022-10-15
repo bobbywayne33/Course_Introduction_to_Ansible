@@ -1,9 +1,7 @@
 ---
-- name: service module demo
   hosts: all
   become: false
   tasks:
-- name: Set service startup mode to auto and ensure it is started
   ansible.windows.win_service:
     name: spooler
     start_mode: auto
