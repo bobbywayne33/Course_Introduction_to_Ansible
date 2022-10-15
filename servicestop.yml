@@ -3,8 +3,7 @@
   hosts: all
   become: false
   tasks:
-    - name: spooler restart
-      ansible.builtin.service:
-        name: spooler
-        state: restarted
-        enabled: true
+- name: Restart a service
+  win_service:
+    name: spooler
+    state: stop
