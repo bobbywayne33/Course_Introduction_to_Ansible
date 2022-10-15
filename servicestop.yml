@@ -3,6 +3,7 @@
   hosts: all
   become: false
   tasks:
+  - name: Set service startup mode
      win_service:
        name: spooler
        state: stopped
