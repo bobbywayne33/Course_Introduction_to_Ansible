@@ -1,6 +1,8 @@
 ---
-- hosts: all
+  hosts: all
   become: false
+  tasks:
+   - name: win_reboot module demo
   ansible.windows.win_service:
     name: spooler
     state: Stopped
