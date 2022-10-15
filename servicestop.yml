@@ -1,8 +1,10 @@
 ---
+- name: service module demo
   hosts: all
   become: false
   tasks:
-   - name: win_reboot module demo
-  ansible.windows.win_service:
-    name: spooler
-    state: Stopped
+    - name: spooler restart
+      ansible.builtin.service:
+        name: spooler
+        state: restarted
+        enabled: true
