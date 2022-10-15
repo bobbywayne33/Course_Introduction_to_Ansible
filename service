@@ -1,0 +1,8 @@
+---
+- name: Stop a service
+  hosts: all
+  become: false
+
+  ansible.windows.win_service:
+    name: spooler
+    state: Stopped
