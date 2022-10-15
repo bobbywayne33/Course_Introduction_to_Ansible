@@ -2,7 +2,7 @@
   hosts: all
   become: false
   tasks:
-  ansible.windows.win_service:
-    name: spooler
-    start_mode: auto
-    state: started
+- name: Stop service Tomcat
+     win_service:
+       name: spooler
+       state: stopped
