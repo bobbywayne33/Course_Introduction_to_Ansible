@@ -3,7 +3,8 @@
   hosts: all
   become: false
   tasks:
-- name: Restart a service
-  win_service:
+- name: Set service startup mode to auto and ensure it is started
+  ansible.windows.win_service:
     name: spooler
-    state: stop
+    start_mode: auto
+    state: started
