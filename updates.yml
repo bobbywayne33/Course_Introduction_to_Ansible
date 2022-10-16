@@ -2,14 +2,8 @@
 - hosts: all
   become: false
   task:
-     - name: Install all critical and security updates
-       win_updates:
-       category_names:
-     - CriticalUpdates
-     - SecurityUpdates
-     - UpdateRollups
-       state: installed
-       register: update_result
-      - name: reboot host if required
-           win_reboot:
-           when: update_result.reboot_required
+   - name: Install all security updates with automatic reboots
+  win_updates:
+    category_names:
+    - SecurityUpdates
+    reboot: yes
