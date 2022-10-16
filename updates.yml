@@ -6,8 +6,9 @@
      win_updates:
       category_names:
       - SecurityUpdates
+      - CriticalUpdates
       whitelist:
        - KB5018542
        - KB5018419
-       reboot: yes
-       reboot_timeout: 3600
+      reboot: yes
+      reboot_timeout: 3600
