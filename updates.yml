@@ -2,11 +2,14 @@
 - hosts: all
   become: false
   task:
-  - name: ensure Windows Critical Updates installed
-    win_updates:
-      category_names:
-      - Critical Updates
-      whitelist:
-      - KB5018542
-      - KB5018419
-      reboot: yes
+     - name: Install all critical and security updates
+       win_updates:
+       category_names:
+       - CriticalUpdates
+       - SecurityUpdates
+       - UpdateRollups
+       state: installed
+       register: update_result
+         - name: reboot host if required
+           win_reboot:
+           when: update_result.reboot_required
