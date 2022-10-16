@@ -2,10 +2,11 @@
 - hosts: all
   become: false
   task:
-   - name: Install only particular updates based on the KB numbers
-     ansible.windows.win_updates:
-     category_name:
-     - SecurityUpdates
-     accept_list:
-     - KB5018542
-     - KB5018419
+  - name: ensure Windows Critical Updates installed
+    win_updates:
+      category_names:
+      - Critical Updates
+      whitelist:
+      - KB5018542
+      - KB5018419
+      reboot: yes
