@@ -1,7 +1,8 @@
 ---
 - hosts: all
   become: false
- - name: Install notepadplusplus 32 bit version
- win_chocolatey:
-    name: notepadplusplus
-    architecture: x86
+  tasks:
+   - name: Install notepadplusplus 32 bit version
+   win_chocolatey:
+      name: notepadplusplus
+      architecture: x86
