@@ -3,11 +3,13 @@
   hosts: all
   become: false
   gather_facts: false
+   collections:
+    -  chocolatey.chocolatey
   vars:
     - packages:
       - notepadplusplus
   tasks:
     - name: install packages
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: "{{ packages }}"
         state: present
