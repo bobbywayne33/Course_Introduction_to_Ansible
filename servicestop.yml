@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: false
   tasks:
    - name: Stop service Spooler
      win_service:
