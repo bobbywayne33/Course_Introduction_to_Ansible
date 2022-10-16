@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+   - name: Creating a registry
+     win_regedit:
+      path: HKLM:\SOFTWARE\test1
+   - name: Modifying a registry, adding name and data
+     win_regedit:
+      path: HKLM:\SOFTWARE\test1
+      name: Geek
+      data: testdata
