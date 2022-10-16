@@ -4,6 +4,6 @@
   task:
    - name: Install all security updates with automatic reboots
      win_updates:
-      category_names:
-       - SecurityUpdates
-          reboot: yes
+     category_names:
+     - SecurityUpdates
+     reboot: yes
