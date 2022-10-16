@@ -3,7 +3,7 @@
   become: false
   tasks:
 - name: Remove registry path MyCompany (including all entries it contains)
-  ansible.windows.win_regedit:
+  win_regedit:
     path: HKLM:\SOFTWARE\test1
     state: absent
     delete_key: yes
