@@ -1,13 +1,8 @@
 ---
-- name: win_chocolatey module demo
+- name: win_chocolatey
   hosts: all
   become: false
-  gather_facts: false
-  vars:
-    - packages:
-      - notepadplusplus
-  tasks:
-    - name: install packages
-      win_chocolatey:
-        name: "{{ packages }}"
-        state: present
+ - name: Install notepadplusplus 32 bit version
+  win_chocolatey:
+    name: notepadplusplus
+    architecture: x86
