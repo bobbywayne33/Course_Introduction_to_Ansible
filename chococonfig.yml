@@ -1,7 +1,0 @@
----
-- name: choco config
-  hosts: all
-  tasks:
-  - name: Ensure Chocolatey itself is installed, using community repo for the bootstrap
-  win_chocolatey:
-    name: chocolatey
