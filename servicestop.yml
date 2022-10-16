@@ -1,8 +1,8 @@
 ---
-- name: stop a service
-  hosts: all
-  become: false
+- hosts: all
+   become: false
   tasks:
-   ansible.windows.win_service:
+ - name: Restart a service
+  ansible.windows.win_service:
     name: spooler
-     state: stopped
+    state: restarted
