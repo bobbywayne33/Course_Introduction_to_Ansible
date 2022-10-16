@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: false
   tasks:
    - name: Creating a registry
      win_regedit:
