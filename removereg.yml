@@ -6,4 +6,3 @@
   win_regedit:
     path: HKLM:\SOFTWARE\test1
     state: absent
-    delete_key: yes
