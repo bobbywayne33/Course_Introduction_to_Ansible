@@ -1,7 +1,7 @@
 ---
 - hosts: all
   become: false
-  task:
+  tasks:
    - name: Install all security updates with automatic reboots
      win_updates:
       category_names:
