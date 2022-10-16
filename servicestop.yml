@@ -3,7 +3,6 @@
   hosts: all
   become: false
   tasks:
-- name: Restart a service
   ansible.windows.win_service:
     name: spooler
     state: stopped
