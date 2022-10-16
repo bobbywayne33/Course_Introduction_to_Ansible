@@ -1,6 +1,6 @@
 ---
-- name: Install all windows security and critical updates and wait 10 mins
-  hosts: windowsservers
+- name: choco config
+  hosts: all
   tasks:
   - name: Ensure Chocolatey itself is installed, using community repo for the bootstrap
   win_chocolatey:
