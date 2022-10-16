@@ -6,7 +6,7 @@
      win_updates:
       category_names:
       - SecurityUpdates
-        whitelist:
+      whitelist:
        - KB5018542
        - KB5018419
        reboot: yes
