@@ -1,8 +1,10 @@
 ---
 - hosts: all
   become: false
+  collections:
+    - chocolatey.chocolatey
   tasks:
   - name: Install notepadplusplus 32 bit version
-    chocolatey.chocolatey.win_chocolatey:
+    win_chocolatey:
      name: notepadplusplus
      architecture: x86
