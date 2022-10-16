@@ -1,8 +1,6 @@
 ---
 - name: win_chocolatey module demo
   hosts: all
-  collections:
-    -  chocolatey.chocolatey
   become: false
   gather_facts: false
   vars:
