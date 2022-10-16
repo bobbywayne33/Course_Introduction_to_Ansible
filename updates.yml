@@ -6,5 +6,8 @@
      win_updates:
       category_names:
       - SecurityUpdates
-      reboot: yes
-      reboot_timeout: 3600
+        accept_list:
+       - KB5018542
+       - KB5018419
+       reboot: yes
+       reboot_timeout: 3600
