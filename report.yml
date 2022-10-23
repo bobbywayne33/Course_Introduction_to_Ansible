@@ -1,0 +1,9 @@
+---
+- name: Scan packages of all Windows hosts
+  hosts: all
+  become: false
+
+  tasks:
+
+    - name: "Scan packages (Windows)"
+      shadowman.reports.win_scan_packages:
