@@ -4,5 +4,5 @@
   tasks:
     - name : Get update list installed
       ansible.windows.win_powershell:
-        script: |
-        get-wmiobject -class win32_quickfixengineering | Export-csv -path {{windows_path}}\{{windows_file_name}}.csv -Delimiter ";"
+       script: |
+       get-wmiobject -class win32_quickfixengineering | Export-csv -path "{{windows_path}}"\"{{windows_file_name}}".csv -Delimiter ";"
