@@ -1,5 +1,6 @@
 - name: windows server patching
   hosts: all
+  become: false
   tasks:
     - name: Check for missing updates
       win_updates:
