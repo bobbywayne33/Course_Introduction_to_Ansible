@@ -3,6 +3,6 @@
   become: false
   tasks:
     - name : Get update list installed
-      win_powershell:
+      ansible.windows.win_powershell:
        script: |
-       get-wmiobject -class win32_quickfixengineering | Export-csv -path {{windows_path}}\{{windows_file_name}}.csv -Delimiter ";"
+        echo "Hello World"
