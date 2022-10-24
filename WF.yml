@@ -5,4 +5,4 @@
     - name : Get update list installed
       win_powershell:
        script: |
-       get-wmiobject -class win32_quickfixengineering | Export-csv -path "{{windows_path}}"\"{{windows_file_name}}".csv -Delimiter ";"
+       get-wmiobject -class win32_quickfixengineering | Export-csv -path {{windows_path}}\{{windows_file_name}}.csv -Delimiter ";"
