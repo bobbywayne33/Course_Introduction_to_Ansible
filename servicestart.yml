@@ -2,7 +2,11 @@
 - hosts: all
   become: false
   tasks:
-   - name: start service start with Con
-     win_service:
-       name: Spooler
-       state: Started
+   - name: Start/modify the services if needed
+       ansible.windows.win_service:
+         name: "{{ item }}"
+         start_mode: auto
+         state: started
+       with_items:
+         - Spooler
+         - PlugPlay
