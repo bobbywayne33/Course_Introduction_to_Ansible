@@ -3,10 +3,10 @@
   become: false
   tasks:
    - name: Start/modify the services if needed
-       win_service:
+     win_service:
          name: "{{ item }}"
          start_mode: auto
          state: started
-       with_items:
+     with_items:
          - Spooler
          - PlugPlay
