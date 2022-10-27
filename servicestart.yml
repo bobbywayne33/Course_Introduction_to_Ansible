@@ -3,7 +3,7 @@
   become: false
   tasks:
    - name: Start/modify the services if needed
-       ansible.windows.win_service:
+       win_service:
          name: "{{ item }}"
          start_mode: auto
          state: started
