@@ -4,5 +4,5 @@
   tasks:
    - name: start service start with Con
      win_service:
-       name: Con*
+       name: App*
        state: Started
