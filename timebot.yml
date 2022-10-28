@@ -6,8 +6,5 @@
 
   tasks:
   - name: Get Server uptime
-      shell: "uptime"
-      register: uptime
-  - name: Get Server uptime
-      win_command: systeminfo | find "Boot Time"
-      register: uptime
+     win_command: systeminfo | find "Boot Time"
+     register: uptime
