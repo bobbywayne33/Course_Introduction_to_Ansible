@@ -2,9 +2,8 @@
 - name: Get server uptime
   hosts: all
   become: false
-  gather_facts: yes
 
   tasks:
   - name: Get Server uptime
-     win_command: systeminfo | find "Boot Time"
+    win_command: systeminfo | find "Boot Time"
      register: uptime
