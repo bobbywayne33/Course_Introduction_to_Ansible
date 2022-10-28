@@ -6,5 +6,5 @@
   tasks:
   - name: run ipconfig
     win_command: systeminfo | find "System Boot Time"
-    register: System Boot Time
-  - debug: var=System Boot Time
+    register: "System Boot Time"
+  - debug: var="System Boot Time"
