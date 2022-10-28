@@ -5,6 +5,6 @@
   gather_facts: yes
   tasks:
   - name: run ipconfig
-    win_command: systeminfo
-    register: systeminfo
-  - debug: var=systeminfo
+    win_command: net statistics workstation
+    register: Statistics since
+  - debug: var=Statistics since
