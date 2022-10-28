@@ -1,0 +1,21 @@
+---
+- name: Get server uptime
+  hosts: all
+  become: false
+  gather_facts: yes
+  vars_prompt:
+   tasks:
+       - name: Get Server uptime
+         shell: "uptime"
+         register: uptime
+
+       - debug:
+           var: uptime
+
+       - name: Get Server uptime
+         win_command: systeminfo | find "Boot Time"
+         register: uptime
+
+       - debug:
+           var: uptime
+      when: ansible_os_family == "Windows"
