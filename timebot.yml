@@ -18,4 +18,4 @@
 
        - debug:
            var: uptime
-      when: ansible_os_family == "Windows"
+      
