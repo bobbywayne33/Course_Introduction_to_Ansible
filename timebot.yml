@@ -5,4 +5,4 @@
   tasks:
   - name: Get Server uptime
     win_command: systeminfo | find "Boot Time"
-     register: uptime
+    register: uptime
