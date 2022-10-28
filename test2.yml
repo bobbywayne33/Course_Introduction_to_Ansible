@@ -3,9 +3,8 @@
   hosts: all
   become: false
   gather_facts: yes
-  vars_prompt:
   tasks:
   - name: run ipconfig
-    win_command: systeminfo | find "Boot Time" 
-    register: systeminfo 
-  - debug: var=systeminfo
+    win_command: ipconfig
+    register: ipconfig
+  - debug: var=ipconfig
