@@ -1,10 +1,8 @@
 ---
-- name: Get server uptime
-  hosts: all
+- name: another raw module example demonstrating powershell one liner
+  hosts: windows
   become: false
   gather_facts: yes
   tasks:
-  - name: run ipconfig
-    win_command: net statistics workstation
-    register: Statistics since
-  - debug: var=Statistics since
+     - name: Move file on remote Windows Server from one location to another
+       win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime"
