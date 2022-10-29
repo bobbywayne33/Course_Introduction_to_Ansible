@@ -5,4 +5,4 @@
   gather_facts: yes
   tasks:
      - name: Move file on remote Windows Server from one location to another
-       win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime"
+       win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime" ;hostname
