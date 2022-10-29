@@ -1,6 +1,6 @@
 ---
 - name: another raw module example demonstrating powershell one liner
-  hosts: windows
+  hosts: all
   become: false
   gather_facts: yes
   tasks:
