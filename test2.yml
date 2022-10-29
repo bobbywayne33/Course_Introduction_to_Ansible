@@ -6,3 +6,9 @@
   tasks:
      - name: Move file on remote Windows Server from one location to another
        win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime"
+         register: jstackOut                                           
+
+    - name: write jstack                                                                                
+      copy:                                                                                              
+        content: "{{jstackOut.stdout}}" 
+        dest: "tmp/jstack.txt"
