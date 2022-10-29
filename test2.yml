@@ -1,8 +1,8 @@
 ---
-- name: another raw module example demonstrating powershell one liner
+- name: boot time with server name
   hosts: all
   become: false
   gather_facts: yes
   tasks:
-     - name: Move file on remote Windows Server from one location to another
+     - name: boot time
        win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime" ;hostname
