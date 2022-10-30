@@ -3,7 +3,7 @@
   become: false
   tasks:
    - name: Get disk facts
-     win_disk_facts:
+     community.windows.win_disk_facts:
 
    - name: Output first disk size
      debug:
@@ -29,7 +29,7 @@
        var: ansible_facts.disks[1].serial_number
 
    - name: get disk physical_disk and partition facts on the target
-     win_disk_facts:
+     community.windows.win_disk_facts:
        filter:
          - physical_disk
          - partitions
