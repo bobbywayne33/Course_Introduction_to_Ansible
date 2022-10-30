@@ -1,0 +1,9 @@
+---
+- name: CPU info
+  hosts: all
+  become: false
+  gather_facts: yes
+  tasks:
+     - name: CPU
+       win_command: Powershell.exe "Get-Process -IncludeUserName | Sort-Object CPU -desc | Select -first 5| Select ProcessName,ID,CPU,UserName,Description | Format-Table -AutoSize" ;hostname
+       
