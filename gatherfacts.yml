@@ -3,7 +3,7 @@
   become: false
   tasks:
   - name: Get disk facts
-    win_disk_facts:
+    community.windows.win_disk_facts:
 
   - name: Output first disk size
     debug:
