@@ -1,8 +1,8 @@
 ---
-- name: Get server uptime
+- name: boot time with server name
   hosts: all
   become: false
+  gather_facts: yes
   tasks:
-  - name: Get Server uptime
-    win_command: systeminfo | find "Boot Time"
-    register: uptime
+     - name: boot time
+       win_command: Powershell.exe "Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime" ;hostname
