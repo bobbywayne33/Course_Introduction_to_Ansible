@@ -5,4 +5,4 @@
   gather_facts: yes
   tasks:
      - name: boot time
-       win_command: Powershell.exe "Get-WindowsPackage -Online -PackageName "*10.0.1.0*" |Remove-WindowsPackage -Online -NoRestart -Verbose"
+       win_command: Powershell.exe "Get-WindowsPackage -Online -PackageName "*10.0.1.0*" |Remove-WindowsPackage -Online"
