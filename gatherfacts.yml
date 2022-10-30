@@ -3,7 +3,7 @@
   become: false
   tasks:
    - name: get disk physical_disk and partition facts on the target
-     community.windows.win_disk_facts:
+     win_disk_facts:
        filter:
          - physical_disk
          - partitions
