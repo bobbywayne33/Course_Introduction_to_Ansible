@@ -1,0 +1,61 @@
+---
+- hosts: all
+  become: false
+  tasks:
+   - name: Run multi-lined shell commands
+     ansible.windows.win_shell: |      
+       Function Set-WMIPortStatic {
+           [CmdletBinding()]
+           param ()
+           Begin {
+               $Result = @()
+               #Check eventlog source and create if not exist
+               $SourceName = "ConfigTask"
+              $LogName = "testlog"
+               $EventSource = Get-EventLog -LogName $LogName  -Source $SourceName -ErrorAction SilentlyContinue 
+    
+               if ($null -eq $EventSource) {
+                   New-EventLog -LogName $LogName -Source $SourceName 
+               }
+           }
+          Process {
+              try {
+                  $standaloneresult = cmd.exe --% /c winmgmt -standalonehost
+            
+                  $msg = "Success: WMI set to StandAloneHost"
+                 Write-EventLog -LogName $LogName  -Source $SourceName -EventId 10 -EntryType Information -Message $msg -Category 5
+            
+                 if ($standaloneresult) {
+                     #Stop/Start WMI Service
+                       Restart-Service 'winmgmt' -force
+
+                      #Start-Service 'winmgmt' -PassThru
+                      #Restart dependant service ualsvc
+                       Start-Service 'ualsvc' -PassThru
+                       #Restart dependant service SCCM Client
+                       Start-Service 'ccmexec' -PassThru
+                   }
+                   $result += [PSCustomObject]@{
+                       Computername = $env:COMPUTERNAME
+                       Result = ($standaloneresult | ConvertTo-Json)
+                   }
+            
+                   $resultJson = $result | ConvertTo-Json
+               }
+               catch {
+                   $msg = "Error Occurred-- " + $($Error[0].Exception.Message).tostring()
+                   Write-Error $msg
+                   Write-EventLog -LogName $LogName  -Source $SourceName -EventId 11 -EntryType Error -Message $msg -Category 6
+               }
+                  }
+           End {
+               # Write output to console
+               Write-Output $resultJson
+    
+               # Write output to event log
+               $msg = "Set-GuggWMIPortStatic task completed-$resultJson"
+               Write-EventLog -LogName $LogName  -Source $SourceName -EventId 10 -EntryType Information -Message $msg -Category 5
+           }
+       }
+
+       Set-WMIPortStatic
