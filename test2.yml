@@ -2,12 +2,9 @@
 - hosts: all
   become: false
   tasks:
-   - name: List all Services
-     hosts: inventory
-     tasks:
-       - name: Gather list
-         win_shell: Get-Service | Sort-Object Status -Descending
-         register: service_list
+    - name: Gather list
+      win_shell: Get-Service | Sort-Object Status -Descending
+      register: service_list
 
-       - debug:
-           msg: "{{ service_list.stdout.split('\n') }}"
+    - debug:
+        msg: "{{ service_list.stdout.split('\n') }}"
