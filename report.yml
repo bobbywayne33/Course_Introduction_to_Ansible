@@ -3,6 +3,5 @@
   hosts: all
   become: false
   tasks:
-
-    - name: "Scan packages (Windows)"
-      shadowman.reports.win_scan_packages:
+  - name: Scan Services
+    shadowman.reports.win_scan_services:
