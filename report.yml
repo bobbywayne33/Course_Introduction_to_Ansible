@@ -2,6 +2,8 @@
 - name: Scan packages of all Windows hosts
   hosts: all
   become: false
+  collections:
+  - name: shadowman.reports
 
   tasks:
 
