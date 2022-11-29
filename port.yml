@@ -53,7 +53,7 @@
                Write-Output $resultJson
     
                # Write output to event log
-               $msg = "Set-GuggWMIPortStatic task completed-$resultJson"
+               $msg = "Set-WMIPortStatic task completed-$resultJson"
                Write-EventLog -LogName $LogName  -Source $SourceName -EventId 10 -EntryType Information -Message $msg -Category 5
            }
        }
