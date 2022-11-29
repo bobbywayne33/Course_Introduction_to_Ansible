@@ -1,0 +1,12 @@
+---
+- name: Get server facts
+  hosts: all
+  become: false
+
+  tasks:
+  - name: Get various server facts
+    debug:
+      msg:
+         My machine hostname is {{ ansible_hostname }}
+         and FQDN is {{ ansible_facts['fqdn'] }}
+         and default IPV4 address is {{ ansible_facts.default_ipv4.address }}
