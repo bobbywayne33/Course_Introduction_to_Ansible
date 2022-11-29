@@ -32,8 +32,7 @@
                       #Start-Service 'winmgmt' -PassThru
                       #Restart dependant service ualsvc
                        Start-Service 'ualsvc' -PassThru
-                       #Restart dependant service SCCM Client
-                       Start-Service 'ccmexec' -PassThru
+                       
                    }
                    $result += [PSCustomObject]@{
                        Computername = $env:COMPUTERNAME
