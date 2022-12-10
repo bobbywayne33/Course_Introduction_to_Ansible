@@ -2,5 +2,11 @@
 - hosts: all
   become: false
   tasks:
-  - name: Check for .NET Framework version
-    win_shell: "Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' | Get-ItemProperty -Name Version,Release -EA 0 | Select-Object Version,Release | Format-Table -AutoSize"
+  - name: Check for .NET Framework versions
+    win_reg_stat:
+      path: HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP
+    register: dotnet_versions
+
+  - name: Output .NET Framework versions
+    debug:
+      var: dotnet_versions.stat.exists
