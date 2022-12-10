@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: false
+  tasks:
+  # Get compliance report data
+  - name: Get compliance report data
+    win_shell: "Get-WmiObject -Class Win32_QuickFixEngineering | Select-Object -Property HotFixID,InstalledOn | Sort-Object -Property InstalledOn -Descending | ConvertTo-Html -Property HotFixID,InstalledOn -Fragment"
+    register: installed_updates_report
