@@ -3,7 +3,7 @@
   become: false
   tasks:
   - name: Gather facts about disks attached to the host
-    win_disk_facts:
+    ansible.windows.win_disk_facts:
 
   - name: Output disk sizes in gigabytes
     debug:
