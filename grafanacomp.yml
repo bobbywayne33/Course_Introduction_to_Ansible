@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: false
+  tasks:
+  # Get compliance report data
+  - name: Get compliance report data
+    win_shell: "Get-WmiObject -Class Win32_QuickFixEngineering | Select-Object -Property HotFixID,InstalledOn | Sort-Object -Property InstalledOn -Descending | ConvertTo-Html -Property HotFixID,InstalledOn -Fragment"
+    register: installed_updates_report
+
+  # Push compliance report data to Grafana
+  - name: Push compliance report data to Grafana
+    win_grafana:
+      host: http://192.168.0.117
+      port: 3000
+      token: h2L2Lq60sfjb6jb8qM2WwnFnpSBM2l
+      api_version: 6
+      dashboard:
+        title: Installed Updates Compliance Report
+        panels:
+        - title: Installed Updates
+          type: table
+          data_source: Compliance Report Data
+          data: "{{ installed_updates_report.stdout }}"
