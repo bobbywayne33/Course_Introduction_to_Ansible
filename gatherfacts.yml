@@ -1,21 +1,10 @@
 ---
-- hosts: all 
+- hosts: all
   become: false
-  tasks: 
-  - name: Get disk facts
+  tasks:
+  - name: Gather facts about disks attached to the host
     win_disk_facts:
 
-  - name: Output first disk size
+  - name: Output disk sizes in gigabytes
     debug:
-      var: ansible_facts.disks[0].size
-
-  - name: Convert first system disk into various formats
-    debug:
-      msg: '{{ disksize_gib }} vs {{ disksize_gib_human }}'
-    vars:
-      # Get first system disk
-      disk: '{{ ansible_facts.disks|selectattr("system_disk")|first }}'
-
-      # Show disk size in Gibibytes
-      disksize_gib_human: '{{ disk.size|filesizeformat(true) }}' 
-      disksize_gib: '{{ (disk.size/1024|pow(3))|round|int }} GiB'
+      msg: "{{ ansible_facts.disks[0].size|div(1024**3)|round(2) }} GB"
