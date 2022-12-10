@@ -9,4 +9,4 @@
 
   - name: Output .NET Framework versions
     debug:
-      var: dotnet_versions.stat.exists
+      msg: "{{ inventory_hostname }}: {{ dotnet_versions.stat.exists }}"
