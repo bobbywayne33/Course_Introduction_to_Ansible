@@ -1,0 +1,16 @@
+---
+- name: Restart stopped services
+  hosts: localhost
+  gather_facts: no
+  vars:
+    service_name: "{{ lookup('env', 'SERVICE_NAME') }}"
+  tasks:
+    - name: Restart the stopped service
+      service:
+        name: "{{ service_name }}"
+        state: restarted
+      register: service_result
+
+    - name: Display the service restart result
+      debug:
+        var: service_result
