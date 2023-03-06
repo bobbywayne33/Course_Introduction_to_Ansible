@@ -2,7 +2,7 @@
 - name: Check log space on /var/log
   hosts: your_server_hostname
   gather_facts: no
-  become: yes
+  become: false
 
   tasks:
     - name: Check log space on /var/log
