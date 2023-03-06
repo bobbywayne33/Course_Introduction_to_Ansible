@@ -1,0 +1,14 @@
+---
+- name: Check log space on /var/log
+  hosts: your_server_hostname
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Check log space on /var/log
+      shell: df -h /var/log | awk 'NR==2{print $5}'
+      register: log_space
+
+    - name: Display log space used
+      debug:
+        var: log_space.stdout_lines
