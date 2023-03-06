@@ -1,6 +1,6 @@
 ---
 - name: Check log space on /var/log
-  hosts: your_server_hostname
+  hosts: all
   gather_facts: no
   become: false
 
