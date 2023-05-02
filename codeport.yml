@@ -1,0 +1,8 @@
+- name: windows server patching
+  hosts: all
+  become: false
+  tasks:
+    - name: Set DCOM custom port to 20173
+      dcom_custom_port:
+        port: 20173
+
