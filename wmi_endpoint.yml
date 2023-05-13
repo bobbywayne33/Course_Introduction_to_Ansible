@@ -1,0 +1,12 @@
+---
+- name: Create WMI endpoint
+  hosts: all
+  become: false
+  gather_facts: no
+  tasks:
+    - name: Create WMI endpoint
+      win_wmi_endpoint:
+        host: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        port: 25148
